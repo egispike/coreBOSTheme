@@ -2,15 +2,18 @@
   {% import _self as macros %}
   {% for p in page.children.visible %}
     {% set active_page = (p.active or p.activeChild) ? 'active' : '' %}
-    <li>
-      <a href="{{ p.url }}" class="{{ active_page }}">
+    <li class="nav-item {{ active_page }}">
+      <a href="{{ p.url }}" class="nav-link">
         {{ p.menu }}
       </a>
       {% if p.children.visible.count > 0 %}
-      <ul>
+        <span class="icon"><i class="arrow_carrot-down"></i></span>
+      <ul  class="list-unstyled dropdown_nav">
         {{ macros.nav_loop(p) }}
       </ul>
       {% endif %}
     </li>
   {% endfor %}
 {% endmacro %}
+
+
